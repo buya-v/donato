@@ -1,0 +1,15 @@
+<!-- templates/contribute.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contribute to the AI Project</title>
+</head>
+<body>
+    <h1>Contribute to the AI Project</h1>
+    <form method="POST" action="{{ url_for('contribute') }}">
+        <label for="contribution_amount">Contribution Amount (USD):</label>
+        <input type="number" id="contribution_amount" name="contribution_amount" required>
+        <button type="submit">Contribute</button>
+    </form>
+</body>
+</html>
