@@ -123,19 +123,20 @@ def contribute():
         return_url = url_for("payment_confirmation", _external=True)
 
         payload = {
-            "ordertype": "3dsOrder", # Or "Non3dsOrder" if you don't need 3DS
-            "terminalid": terminalid, # Replace with your data
-            "username": username,    # Replace with your data
-            "password": password, # Replace with your data
+            "ordertype": "3dsOrder",
+            "terminalid": "1", 
+            "username": "user",
+            "password": "123456",
             "returnurl": return_url,
             "amount": contribution_amount,
-            "currency": "MNT", #Or "USD" or whatever currency you want to use
-            "ordernum": "YOUR_UNIQUE_ORDER_NUMBER"  # Replace with your unique order number
+            "currency": "USD",
+            "ordernum": "20250306001"  # Replace with your unique order number
         }
         #Important note: ordernum is order number of the Merchant
         headers = {"Content-Type": "application/json"} # Remove Authorization header
 
         try:
+            print(payload)
             response = requests.post(negdi_api_url, json=payload, headers=headers)
             response.raise_for_status()
             data = response.json()
@@ -191,9 +192,9 @@ def payment_confirmation():
     public_key = os.environ.get("NEGDI_PUBLIC_KEY") # Public key from .env
 
     payload = {
-        "terminalid": terminalid, # replace
-        "username": username, # replace
-        "password": password, # replace
+        "terminalid": "1",
+        "username": "user",
+        "password": "123456",
         "tranid": tranid,
         "checkid": checkid
     }
