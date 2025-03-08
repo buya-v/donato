@@ -23,6 +23,7 @@ else:
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
+print(f" secret key used: {app.secret_key}")
 
 # PostgreSQL Database Connection (same as before)
 def get_db_connection():
@@ -123,13 +124,13 @@ def contribute():
         return_url = url_for("payment_confirmation", _external=True)
 
         payload = {
-            "ordertype": "3dsOrder",
-            "terminalid": "1", 
-            "username": "user",
-            "password": "123456",
+            "ordertype": "Non3dsOrder",
+            "terminalid": terminalid, 
+            "username": username,
+            "password": password,
             "returnurl": return_url,
             "amount": contribution_amount,
-            "currency": "USD",
+            "currency": "MNT",
             "ordernum": "20250306001"  # Replace with your unique order number
         }
         #Important note: ordernum is order number of the Merchant
@@ -185,19 +186,21 @@ def payment_confirmation():
         return render_template("payment_error.html", error_message="Missing transaction information from payment gateway.")
 
     # --- Verify Payment with ec1098 (Inquiry Order) ---
-    negdi_inquiry_url = os.environ.get("NEGDI_API_URL") #From env variable
+    negdi_inquiry_url = os.environ.get("NEGDI_INQUIRY_URL") #From env variable
     terminalid = os.environ.get("NEGDI_TERMINAL_ID")
     username = os.environ.get("NEGDI_USERNAME")
     password = os.environ.get("NEGDI_PASSWORD")
     public_key = os.environ.get("NEGDI_PUBLIC_KEY") # Public key from .env
 
     payload = {
-        "terminalid": "1",
-        "username": "user",
-        "password": "123456",
+        "terminalid": terminalid,
+        "username": username,
+        "password": password,
         "tranid": tranid,
         "checkid": checkid
     }
+
+    print(payload)
 
     headers = {"Content-Type": "application/json"}
 
@@ -205,6 +208,8 @@ def payment_confirmation():
         response = requests.post(negdi_inquiry_url, json=payload, headers=headers)
         response.raise_for_status()
         data = response.json()
+        
+        print(data)
 
         # Verify signature again!
         order_data = data.get("order")
@@ -225,6 +230,10 @@ def payment_confirmation():
                 if conn:
                     try:
                         cur = conn.cursor()
+                        # cur.execute(
+                        #     "INSERT INTO users (id, email, password) VALUES (%s, %s, %s)",
+                        #     (1, "test@itauco.mn", "completed"),
+                        # )
                         cur.execute(
                             "INSERT INTO contributions (user_id, amount, transaction_id, status) VALUES (%s, %s, %s, %s)",
                             (1, 100.00, tranid, "completed"),
