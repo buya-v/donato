@@ -1,11 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Donato AI Presale</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AI Developer Agent for Odoo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #F0F0F0; /* Odoo's light gray for background */
+            color: #333333; /* Dark gray for text */
+        }
+        header {
+            background: #714B67; /* Odoo's deep purple */
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #714B67; /* Odoo's deep purple */
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .cta-button:hover {
+            background-color: #F0F0F0; /* Odoo's light gray */
+        }
+        .features, .use-cases, .benefits {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+            background-color: white;
+            flex-wrap: wrap;
+        }
+        .feature, .use-case, .benefit {
+            text-align: center;
+            max-width: 300px;
+            margin: 20px;
+        }
+        .feature h2, .use-case h2, .benefit h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #714B67; /* Odoo's deep purple */
+        }
+        .feature p, .use-case p, .benefit p {
+            font-size: 1em;
+            color: #666666; /* Lighter gray for secondary text */
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #714B67; /* Odoo's deep purple */
+            color: white;
+        }
+        #presale {
+            background-color: #00A09D; /* Odoo's teal green */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        #presale .cta-button {
+            background-color: white;
+            color: #00A09D; /* Odoo's teal green */
+        }
+        #presale .cta-button:hover {
+            background-color: #F0F0F0; /* Odoo's light gray */
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Donato AI Presale!</h1>
-    <p>Contribute to our AI project.</p>
-    <a href="{{ url_for('contribute') }}">Contribute Now</a>
+
+    <header>
+        <h1>AI Developer Agent for Odoo</h1>
+        <p>Revolutionize Odoo custom module development with AI-powered automation.</p>
+        <a href="{{ url_for('contribute') }}" class="cta-button" >Contribute Now</a>
+    </header>
+
+    <section class="features">
+        <div class="feature">
+            <h2>Automated Code Generation</h2>
+            <p>Generate high-quality Odoo module code based on user requirements, reducing development time and errors.</p>
+        </div>
+        <div class="feature">
+            <h2>Chatbot Interface</h2>
+            <p>Interact with a user-friendly chatbot to gather requirements and guide the development process.</p>
+        </div>
+        <div class="feature">
+            <h2>Seamless Odoo Integration</h2>
+            <p>Easily deploy generated modules into Odoo environments with automated scripts and instructions.</p>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <h2 style="text-align: center; width: 100%; color: #714B67;">Use Cases</h2>
+        <div class="use-case">
+            <h2>Requirement Gathering</h2>
+            <p>Quickly gather and analyze requirements for new Odoo modules through guided chatbot interactions.</p>
+        </div>
+        <div class="use-case">
+            <h2>Customization</h2>
+            <p>Customize existing Odoo modules with additional features, such as payment gateway integrations or automated reminders.</p>
+        </div>
+        <div class="use-case">
+            <h2>Rapid Prototyping</h2>
+            <p>Develop lightweight prototypes for testing new module ideas before full-scale implementation.</p>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <h2 style="text-align: center; width: 100%; color: #714B67;">Benefits</h2>
+        <div class="benefit">
+            <h2>Increased Efficiency</h2>
+            <p>Automate repetitive tasks and reduce development time, allowing teams to focus on strategic initiatives.</p>
+        </div>
+        <div class="benefit">
+            <h2>Cost-Effectiveness</h2>
+            <p>Reduce the need for hiring additional developers and minimize training costs with AI-driven automation.</p>
+        </div>
+        <div class="benefit">
+            <h2>Scalability</h2>
+            <p>Handle multiple development requests simultaneously, ensuring scalability for growing businesses.</p>
+        </div>
+    </section>
+
+    <section id="presale">
+        <h2>Join the Presale Now</h2>
+        <p>Be the first to experience the future of Odoo module development. Limited spots available!</p>
+        <a href="{{ url_for('contribute') }}" class="cta-button" >Contribute Now</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 AI Developer Agent for Odoo. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
+

@@ -1,15 +1,75 @@
-<!-- templates/contribute.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contribute to the AI Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #F0F0F0; /* Odoo's light gray for background */
+            color: #333333; /* Dark gray for text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contribute-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #714B67; /* Odoo's deep purple */
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 1.1em;
+            color: #333333; /* Dark gray for text */
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #714B67; /* Odoo's deep purple */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #00A09D; /* Odoo's teal green on hover */
+        }
+    </style>
 </head>
 <body>
-    <h1>Contribute to the AI Project</h1>
-    <form method="POST" action="{{ url_for('contribute') }}">
-        <label for="contribution_amount">Contribution Amount (USD):</label>
-        <input type="number" id="contribution_amount" name="contribution_amount" required>
-        <button type="submit">Contribute</button>
-    </form>
+    <div class="contribute-container">
+        <h1>Contribute to the AI Project</h1>
+        <form method="POST" action="{{ url_for('contribute') }}">
+            <label for="contribution_amount">Contribution Amount (USD):</label>
+            <input type="number" id="contribution_amount" name="contribution_amount" required>
+            <button type="submit">Contribute</button>
+        </form>
+    </div>
 </body>
 </html>
