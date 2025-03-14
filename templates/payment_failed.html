@@ -1,11 +1,65 @@
-<!-- templates/payment_failed.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Payment Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #F0F0F0; /* Odoo's light gray for background */
+            color: #333333; /* Dark gray for text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .failed-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #714B67; /* Odoo's deep purple */
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            color: #666666; /* Lighter gray for secondary text */
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            background-color: #714B67; /* Odoo's deep purple */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #00A09D; /* Odoo's teal green on hover */
+        }
+    </style>
 </head>
 <body>
-    <h1>Payment Failed</h1>
-    <p>Your payment was not processed.  Please try again or contact support.</p>
+    <div class="failed-container">
+        <h1>Payment Failed</h1>
+        <p>Your payment was not processed. Please try again or contact support.</p>
+        <a href="{{ url_for('contribute') }}">Try Again</a> <!-- Link to retry payment -->
+        <!-- <a href="{{ url_for('support') }}" style="margin-left: 10px;">Contact Support</a> Link to support -->
+    </div>
 </body>
 </html>

@@ -259,7 +259,10 @@ def payment_confirmation():
                 return render_template("payment_failed.html")
         else:
             print(f"Negdi Inquiry API Error: {data}")
-            return render_template("payment_error.html", error_message="Payment processing error: Could not retrieve payment status.")
+            error_reason = data.get("order", {}).get("reason", "Error without reason")
+            payment_status = data.get("order", {}).get("status", "Undefined status")
+            print(f"Payment failed. Status: {payment_status}, Reason: {error_reason}")
+            return render_template("payment_error.html", error_message=error_reason)
 
     except requests.exceptions.RequestException as e:
         print(f"Network Error (inquiry): {e}")
