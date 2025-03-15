@@ -72,11 +72,9 @@
         <h1>Payment Confirmation</h1>
         <p>Your payment was successfully processed. Thank you for your contribution!</p>
         <a href="{{ url_for('index') }}">Return to Home</a> <!-- Link to return to the home page -->
-        
-        <h2>Your Unique Token:</h2>
-        <p>{{ token }}</p>
 
-        <h2>QR Code:</h2>
+        <h1>Your Unique Token:</h2>
+        <p>Store it securely. It will used for receiving discounted service.</p>
         <img src="{{ qr_code }}" alt="QR Code" />
     </div>
 </body>

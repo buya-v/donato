@@ -220,7 +220,7 @@ def contribute():
             "password": password,
             "returnurl": return_url,
             "amount": contribution_amount,
-            "currency": "USD",
+            "currency": "MNT",
             "ordernum": ordernum,  # Use the generated unique order number
         }
         # Important note: ordernum is order number of the Merchant
