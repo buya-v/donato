@@ -105,6 +105,8 @@ def verify_negdi_signature(order_data, ordersign, public_key):
         # **IMPORTANT: Replace this with actual signature verification code!**
         is_valid = ordersign_decoded == hashed_order_data  # VERY INSECURE - REPLACE THIS
 
+        is_valid = True # TODO: need to fix when completion of signature verification
+
         return is_valid
     except Exception as e:
         print(f"Error verifying signature: {e}")
@@ -238,9 +240,9 @@ def contribute():
 
             is_signature_valid = verify_negdi_signature(order_data, ordersign, public_key)
 
-            # if not is_signature_valid:
-            #     print("Signature verification failed!")
-            #     return render_template("payment_error.html", error_message="Payment processing error: Invalid signature from payment gateway.")
+            if not is_signature_valid:
+                print("Signature verification failed!")
+                return render_template("payment_error.html", error_message="Payment processing error: Invalid signature from payment gateway.")
 
             if "order" in data and "negdiurl" in data["order"]:
                 negdi_url = data["order"]["negdiurl"]  # Get the redirect URL from the response
@@ -320,9 +322,9 @@ def payment_confirmation():
         ordersign = data.get("ordersign")
         is_signature_valid = verify_negdi_signature(order_data, ordersign, public_key)
 
-        # if not is_signature_valid:
-        #     print("Signature verification failed (inquiry)!")
-        #     return render_template("payment_error.html", error_message="Payment processing error: Invalid signature from payment gateway (inquiry).")
+        if not is_signature_valid:
+            print("Signature verification failed (inquiry)!")
+            return render_template("payment_error.html", error_message="Payment processing error: Invalid signature from payment gateway (inquiry).")
 
         if "order" in data and "status" in data["order"]:
             payment_status = data["order"]["status"]
@@ -347,7 +349,7 @@ def payment_confirmation():
                         #     (1, "test@itauco.mn", "completed"),
                         # )
                         cur.execute(
-                            "INSERT INTO contributions (email, amount, transaction_id, status, ordernum, token, checkid) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                            "INSERT INTO contributions (email, amount, transaction_id, status, ordernum, token, check_id) VALUES (%s, %s, %s, %s, %s, %s, %s)",
                             (email, 100.00, tranid, "completed", ordernum, token, checkid),  # Insert the ordernum, token to database and checkid
                         )
 

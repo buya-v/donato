@@ -10,7 +10,7 @@ CREATE TABLE contributions (
     status TEXT NOT NULL,
     ordernum TEXT,
     token TEXT,
-    checkid TEXT,
+    check_id TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
