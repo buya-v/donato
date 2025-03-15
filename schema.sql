@@ -1,3 +1,25 @@
+-- schema.sql
+DROP TABLE IF EXISTS contributions;
+DROP TABLE IF EXISTS order_numbers;  -- Added table
+
+CREATE TABLE contributions (
+    id SERIAL PRIMARY KEY,
+    email TEXT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    transaction_id TEXT,
+    status TEXT NOT NULL,
+    ordernum TEXT,
+    token TEXT,
+    checkid TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE order_numbers (
+    datestamp TEXT PRIMARY KEY,
+    last_number INTEGER NOT NULL
+);
+
+-- archived sql
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS contributions;
 

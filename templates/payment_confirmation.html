@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +12,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #F0F0F0; /* Odoo's light gray for background */
-            color: #333333; /* Dark gray for text */
+            background-color: #F0F0F0;
+            /* Odoo's light gray for background */
+            color: #333333;
+            /* Dark gray for text */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             text-align: center;
         }
+
         .confirmation-container {
             background-color: white;
             padding: 40px;
@@ -27,19 +31,25 @@
             max-width: 500px;
             width: 100%;
         }
+
         h1 {
-            color: #714B67; /* Odoo's deep purple */
+            color: #714B67;
+            /* Odoo's deep purple */
             font-size: 2em;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 1.1em;
-            color: #666666; /* Lighter gray for secondary text */
+            color: #666666;
+            /* Lighter gray for secondary text */
             margin-bottom: 20px;
         }
+
         a {
             display: inline-block;
-            background-color: #714B67; /* Odoo's deep purple */
+            background-color: #714B67;
+            /* Odoo's deep purple */
             color: white;
             padding: 10px 20px;
             font-size: 1em;
@@ -49,16 +59,26 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         a:hover {
-            background-color: #00A09D; /* Odoo's teal green on hover */
+            background-color: #00A09D;
+            /* Odoo's teal green on hover */
         }
     </style>
 </head>
+
 <body>
     <div class="confirmation-container">
         <h1>Payment Confirmation</h1>
         <p>Your payment was successfully processed. Thank you for your contribution!</p>
         <a href="{{ url_for('index') }}">Return to Home</a> <!-- Link to return to the home page -->
+        
+        <h2>Your Unique Token:</h2>
+        <p>{{ token }}</p>
+
+        <h2>QR Code:</h2>
+        <img src="{{ qr_code }}" alt="QR Code" />
     </div>
 </body>
+
 </html>
